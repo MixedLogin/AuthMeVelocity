@@ -135,5 +135,11 @@ public class ProxyConfiguration {
         public int randomAttempts() {
             return this.randomAttempts;
         }
+
+        @Comment("Skip login for online player")
+        private boolean skinOnlineLogin = true;
+        public boolean skinOnlineLogin() {
+            return this.skinOnlineLogin;
+        }
     }
 }

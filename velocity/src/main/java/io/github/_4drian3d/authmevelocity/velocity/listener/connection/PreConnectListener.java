@@ -22,6 +22,7 @@ import com.velocitypowered.api.event.EventManager;
 import com.velocitypowered.api.event.EventTask;
 import com.velocitypowered.api.event.player.ServerPreConnectEvent;
 import com.velocitypowered.api.proxy.server.RegisteredServer;
+import io.github._4drian3d.authmevelocity.common.configuration.ProxyConfiguration;
 import io.github._4drian3d.authmevelocity.velocity.AuthMeVelocityPlugin;
 import io.github._4drian3d.authmevelocity.velocity.listener.Listener;
 
@@ -39,6 +40,12 @@ public final class PreConnectListener implements Listener<ServerPreConnectEvent>
     @Override
     public EventTask executeAsync(final ServerPreConnectEvent event) {
         return EventTask.withContinuation(continuation -> {
+            final ProxyConfiguration config = plugin.config().get();
+            if(config.advanced().skinOnlineLogin()&&event.getPlayer().isOnlineMode()){
+                plugin.logDebug(() -> "ServerPreConnectEvent | Player " + event.getPlayer().getUsername() + " is online");
+                continuation.resume();
+                return;
+            }
             if (plugin.isLogged(event.getPlayer())) {
                 plugin.logDebug(() -> "ServerPreConnectEvent | Player " + event.getPlayer().getUsername() + " is already logged");
                 continuation.resume();
