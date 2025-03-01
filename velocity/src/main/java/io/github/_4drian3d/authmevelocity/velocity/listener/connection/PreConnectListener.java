@@ -42,6 +42,7 @@ public final class PreConnectListener implements Listener<ServerPreConnectEvent>
         return EventTask.withContinuation(continuation -> {
             final ProxyConfiguration config = plugin.config().get();
             if(config.advanced().skinOnlineLogin()&&event.getPlayer().isOnlineMode()){
+                plugin.addPlayer(event.getPlayer());
                 plugin.logDebug(() -> "ServerPreConnectEvent | Player " + event.getPlayer().getUsername() + " is online");
                 continuation.resume();
                 return;
