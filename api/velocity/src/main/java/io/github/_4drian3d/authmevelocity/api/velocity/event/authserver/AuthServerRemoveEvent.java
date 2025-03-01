@@ -15,13 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-package io.github._4drian3d.authmevelocity.api.velocity.event;
+package io.github._4drian3d.authmevelocity.api.velocity.event.authserver;
 
-import com.velocitypowered.api.proxy.Player;
 import org.jetbrains.annotations.NotNull;
 
 /**
- * Event executed in case the player has logout from the network
- * @param player the player who has logged out
- * */
-public record ProxyLogoutEvent(@NotNull Player player) {}
+ * Event to execute when removing an auth server
+ *
+ * @param server the server to remove
+ */
+public record AuthServerRemoveEvent(@NotNull String server) {
+}

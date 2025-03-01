@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 AuthMeVelocity Contributors
+ * Copyright (C) 2025 AuthMeVelocity Contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -90,4 +90,22 @@ public interface AuthMeVelocityAPI {
      * @return if the server is an auth server
      */
     boolean isAuthServer(@NotNull String server);
+
+    /**
+     * Adds a server to the list of auth servers
+     * @param server the server name
+     */
+    void addAuthServer(@NotNull String server);
+
+    /**
+     * Removes a server from the list of auth servers
+     * @param server the server name
+     */
+    void removeAuthServer(@NotNull String server);
+
+    /**
+     * Removes servers that meet the established condition
+     * @param predicate the condition
+     */
+    void removeAuthServerIf(@NotNull Predicate<String> predicate);
 }

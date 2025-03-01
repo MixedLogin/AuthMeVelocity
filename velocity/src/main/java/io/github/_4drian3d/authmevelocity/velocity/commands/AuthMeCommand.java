@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2024 AuthMeVelocity Contributors
+ * Copyright (C) 2025 AuthMeVelocity Contributors
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -45,6 +45,7 @@ public class AuthMeCommand {
                             final CommandSource source = cmd.getSource();
                             plugin.config().reload().handleAsync((v, ex) -> {
                                 if (ex == null) {
+                                    plugin.setAuthServers(plugin.config().get().authServers());
                                     plugin.sendInfoMessage();
                                     source.sendMessage(MiniMessage.miniMessage().deserialize(
                                             "<aqua>AuthmeVelocity <green>has been successfully reloaded"));
